@@ -7,6 +7,15 @@ public class Commands {
 
 	public int[] withdraw(String x, int[] array) {
 		int value = Integer.parseInt(x);
+		if (value / 1000 > 0) {
+			if (array[6] - (value / 1000) > 0) {
+				array[6] = array[6] - (value / 1000);
+				value = value % 1000;
+			} 
+			else {
+				System.out.println("Failure: insufficient funds");
+			}
+		}
 		if (value / 100 > 0) {
 			if (array[5] - (value / 100) > 0) {
 				array[5] = array[5] - (value / 100);
@@ -94,6 +103,9 @@ public class Commands {
 			}
 			if (temp == 100) {
 				System.out.println("$100-" + bills[5]);
+			}
+			if (temp == 1000) {
+				System.out.println("$1000-" + bills[6]);
 			}
 		}
 	}
